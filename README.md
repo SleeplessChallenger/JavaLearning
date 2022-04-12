@@ -83,3 +83,20 @@
     2. `java chapter1/Learning`
 15. multiple classes can be defined in the same file, but only one of them is allowed to be public
     - but class may have no `public` classes
+16. `main()` is the entry point. If we have new class created inside `main` ->
+   it'll be executed first and all the surrounding stuff. Then we'll come back to the `main`
+17. Java has **primitives** & **reference** types
+    1. primitives: boolean, byte, short, int, long, float, double, char
+       - **char** & **short** are similar, but former is unsigned & latter is
+    2. reference: refers to an object (an instance of a class)
+       - primitives are in the memory, whilst reference - points to the object
+         where it is in the memory. So, it saves memory address where the object
+         is located: **pointer**
+    3. We can't reassign to another type
+    4. primitives **can't be** assigned to `null`, whilst reference can
+    5. to use aka `lateinit` for primitives - use wrapper
+
+18. Computers store numbers with floating-points in **scientific notation**, i.e. less precision
+    A byte is 8 bits. A bit has two possible values. 2^8 is2×2=4×2=8×2=16×2=32×2=64× 2 = 128 × 2 = 256. 
+    Since 0 needs to be included in the range, Java takes it away from the positive side
+19. 
