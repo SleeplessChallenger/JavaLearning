@@ -70,7 +70,7 @@
 10. If a `main()` method isn’t present in the class we name with
     the `.java` executable, the process will throw an error and terminate.
     Even if a `main()` method is present, Java will throw an exception if it isn’t `static`
-11. import conflicts: either use full declaration in class
+11. import conflicts: either useful declaration in class
     `    java.util.Date date;
     java.sql.Date sqlDate;`
     or:
@@ -81,22 +81,47 @@
 14. full way to create byte code & run java:
     1. `javac chapter1/Learning.java`
     2. `java chapter1/Learning`
-15. multiple classes can be defined in the same file, but only one of them is allowed to be public
-    - but class may have no `public` classes
-16. `main()` is the entry point. If we have new class created inside `main` ->
-   it'll be executed first and all the surrounding stuff. Then we'll come back to the `main`
-17. Java has **primitives** & **reference** types
-    1. primitives: boolean, byte, short, int, long, float, double, char
-       - **char** & **short** are similar, but former is unsigned & latter is
-    2. reference: refers to an object (an instance of a class)
-       - primitives are in the memory, whilst reference - points to the object
-         where it is in the memory. So, it saves memory address where the object
-         is located: **pointer**
-    3. We can't reassign to another type
-    4. primitives **can't be** assigned to `null`, whilst reference can
-    5. to use aka `lateinit` for primitives - use wrapper
 
-18. Computers store numbers with floating-points in **scientific notation**, i.e. less precision
-    A byte is 8 bits. A bit has two possible values. 2^8 is2×2=4×2=8×2=16×2=32×2=64× 2 = 128 × 2 = 256. 
-    Since 0 needs to be included in the range, Java takes it away from the positive side
-19. 
+<h3>Second chapter</h3>
+
+1 .multiple classes can be defined in the same file, but only one of them is allowed to be public
+    - but class may have no `public` classes
+2. `main()` is the entry point. If we have new class created inside `main` ->
+   it'll be executed first and all the surrounding stuff. Then we'll come back to the `main`
+3. Java has **primitives** & **reference** types
+   1. primitives: boolean, byte, short, int, long, float, double, char
+      - **char** & **short** are similar, but former is unsigned & latter is
+   2. reference: refers to an object (an instance of a class)
+      - primitives are in the memory, whilst reference - points to the object
+        where it is in the memory. So, it saves memory address where the object
+        is located: **pointer**
+   3. We can't reassign to another type
+   4. primitives **can't be** assigned to `null`, whilst reference can
+   5. to use aka `lateinit` for primitives - use wrapper
+
+4. Computers store numbers with floating-points in **scientific notation**, i.e. less precision
+   A byte is 8 bits. A bit has two possible values. 2^8 is2×2=4×2=8×2=16×2=32×2=64× 2 = 128 × 2 = 256. 
+   Since 0 needs to be included in the range, Java takes it away from the positive side
+5. declaration & initialization of variables are two different things
+6. `var` can be used instead of primitives & reference; you can’t leave `var` without specific 
+   type when initializing, but you can do so with ordinary variables. We can assign `var` to `null` only after 
+   initial initialization to some type.
+   `local variable type inference`: in a constructor, method, or initializer block
+7. `if` block is a scope of itself and is smaller than method scope -> can't use variable
+   from `if` in the method
+8. **Garbage collector**: all objects are stored in heap => **collector** frees memory from the heap
+    When object is no longer being accessible to program -> eligible for GC
+9. `System.gc();` is to call GC by hand. But JVM is free to ignore it
+10. What does it mean "object is no longer reachable"?
+    * The object no longer has any references pointing to it
+    * All references to the object have gone out of scope
+11. Difference between **object** & **reference**
+
+<h3>Third chapter</h3>
+
+1. `operand`: variable/value the operator is being applied to. `operator`: action itself, i.e. `+`
+2. 3 types of operators: unary, binary, ternary
+
+
+
+

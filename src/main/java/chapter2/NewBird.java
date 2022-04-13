@@ -3,7 +3,6 @@ package chapter2;
 // enter `main()` -> start execution from the beginning
 // line 8 -> line 12 -> line 16
 public class NewBird {
-
     private String name = "Fluffy bird";
     { System.out.println("setting field"); }
 
