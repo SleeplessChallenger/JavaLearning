@@ -1,7 +1,7 @@
 package chapter2;
 
 // enter `main()` -> start execution from the beginning
-// line 8 -> line 12 -> line 16
+// line 7 -> line 11 -> line 15
 public class NewBird {
     private String name = "Fluffy bird";
     { System.out.println("setting field"); }

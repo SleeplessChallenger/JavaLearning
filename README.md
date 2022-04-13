@@ -121,7 +121,20 @@
 
 1. `operand`: variable/value the operator is being applied to. `operator`: action itself, i.e. `+`
 2. 3 types of operators: unary, binary, ternary
+3. numeric promotion rules:
+   * two values of different types promote to the larger value
+   * int + float => float + float
+   * byte/short/char are promoted to `int` if binary operator are applied to them
+   * to make long, specify L or l after the num
+   # TODO: mention float issue in notes 4th point
+4. Convert data from larger to smaller type (it is usually used). Casting - unary
+5. Overflow: when value is beyond the scope of the data type => system wraps multiple times
+    Underflow: when value is not enough -> it goes back to the maximum value and continues from there
 
-
-
-
+6. Compound assignment operators have **casting** inside them: *=; += etc
+7. Equality operators: 
+   * `==` on primitives: if the same value; on objects: if reference the same object in the heap
+   * `!=` logic is the same as with `==`
+8. Relational operators: `<`, `>=` etc. Pay attention: a `instanceOf` b 
+   * `null` instance of SomeType -> false. But vice versa is **Error**
+9. ternary: `boolExpr ? expr1 : expr2`
