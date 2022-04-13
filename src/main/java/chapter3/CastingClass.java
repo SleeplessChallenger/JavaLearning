@@ -17,15 +17,15 @@ public class CastingClass {
     short catDog = (short)(cat * dog);
     short nextCatDog = (short) (1 + catDog);
 
-//    long goat = 10;
-//    int sheep = 5;
-//    sheep *= goat;
+    long goat = 10;
+    int sheep = 5;
+    {sheep *= goat;}
 
     int owl = 3;
     int food = (owl < 2) ? 3 : 4;
 
     // side effects
-    int sheep = 7;
+//    int sheep = 7;
     int zzz = 2;
     int sleep = (zzz <= 10) ? sheep++ : zzz++;
 

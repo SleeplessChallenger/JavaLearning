@@ -138,3 +138,37 @@
 8. Relational operators: `<`, `>=` etc. Pay attention: a `instanceOf` b 
    * `null` instance of SomeType -> false. But vice versa is **Error**
 9. ternary: `boolExpr ? expr1 : expr2`
+
+<h3>Fourth chapter</h3>
+
+1. `switch` statements can be applied to some primitives & wrappers, but not
+   to Objects. Not allowed: boolean, long, float, double. 
+   Allowed:
+      * `enum`
+      * `String`
+      * `var`
+      * `char` & `Character`
+      * `short` & `Short`
+      * `byte` & `Byte`
+      * `int` & `Integer`
+
+2. If `default` is positioned not at the last position: it'll be still executed
+   only if no other case was matched
+3. `switch` statements have auto-casting, but can give compile errors if JVM cast to lower type
+4. `do-loop`: it will execute body at least ones before checking `while` condition. But `while`
+   will evaluate at first and then move. But you can add additional `if` before `do` to convert loop
+5. Convention for using vars in loop: `i`, `j`, `k`
+6.  You can't re-assign upper variable to variable in loop
+```
+      int x = 0;
+      for(long y = 0, z = 0; y < 5 && x < 8; y++, x++) {
+      System.out.println(y);
+      }
+```
+   You can't use various types in the loop
+   
+7. You can modify **iterator** of a loop inside loop
+8. `for-each` loop is accessible in collections
+9. Use **labels** for fine-grained loop:
+   * PARENT_LOOP: for(int i=0; i < 5; i++) // look in chapter4/LoopClass/loopWithLabel
+10. Also use **labels** for `while` loop
