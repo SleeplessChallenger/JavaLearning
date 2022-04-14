@@ -25,7 +25,7 @@
 
 2. About modifiers:
     - `public` makes visible everywhere
-    - without **any** word - `deafult` modifier: class can be used with other classes **only** within current package
+    - without **any** word - `default` modifier: class can be used with other classes **only** within current package
     - Link to read: https://stackoverflow.com/a/215505/16543524
     - If you have variable of type `static` -> better to have method with `static` keyword as well
     - `final` - lock the variable and don't allow to modify it (aka `val` in Kotlin)
@@ -172,3 +172,87 @@
 9. Use **labels** for fine-grained loop:
    * PARENT_LOOP: for(int i=0; i < 5; i++) // look in chapter4/LoopClass/loopWithLabel
 10. Also use **labels** for `while` loop
+
+<h3>Fifth chapter</h3>
+
+1. We don't need `new` to instantiate String
+2. String implements `CharSequence` interface
+3. Concatenation is left to right
+4. String is immutable, hence you can't use +/concat on the same variable, only new one
+5. Useful methods for Strings:
+   * length()
+   * charAt()
+   * indexOf()
+   * substring() // end is exclusive
+   * toLowerCase() / toUpperCase()
+   * equals() / equalsIgnoreCase()
+   * startsWith() / endsWith()
+   * replace()
+   * contains()
+   * strip() / trim() / stripLeading() / stripTrailing()
+     * `\t` is a single character
+   * intern()
+6. As each time we apply `+=` to String, it's recreated & **Garbage Collector** deletes
+   old string. It's inefficient => use **StringBuilder**. It uses the same object
+7. StringBuilder methods:
+   * charAt() / indexOf() / length() / substring() - same as with String
+     * substring on StringBuilder returns String
+   * append()
+   * insert()
+   * delete() / deleteCharAt() // from idx to idx exclusive
+     * PS: if you specify something that is past the largest element -> won't be error, just remove till last
+   * replace() // allows to specify the second which is past the length
+   * reverse()
+   * toString() // if you need to pass result where String is expected
+8. **String pool**: place in JVM where it collects all strings
+   * creates at runtime -> if 2 strings are different at start, but then
+     made similar -> still different in **Pool**
+   * two different variables of similar String content -> Similar as **String Pool**
+   * `new String()` will also create a separate object **NOT** in the `String Pool`
+   * `new String().intern()`: will check if such string already in String Pool
+
+9.` int[]`: type of array & array symbol; `new int[3]` new array & size 
+10. Anonymous array: `{}`
+11. To print content of array: `Arrays.toString(somerray)`; to sort: `Arrays.sort(someArray)`
+12. About comparator:
+   * -1: first array is smaller
+   * 0: both arrays are similar
+   * 1: first array is larger
+     * **Important**: it compares not only size, but values inside as well. Rule is the same
+13. mismatch():
+   * similar arrays: -1
+   * different arrays: zero/positive arrays
+14. 1D arrays, 2D arrays
+15. ArrayList:
+    * can be of some size
+    * can be without any size
+16. `ArrayList` implements `List` interface & has `toString()` method (while `List` doesn't)
+   * add()
+   * remove()
+   * set()
+   * isEmpty() / size()
+   * clear()
+   * contains()
+   * equals()
+17. wrappers for primitives: Integer, Boolean etc
+    * valueOf() is to convert String into wrapper
+    * parseBoolean, parse...() to convert Strigng into primitive
+18. Autoboxing & Unboxing
+    * autoboxing: from primitive to wrapper
+    * unboxing: from wrapper to primitive
+19. List & Array Conversion:
+    * we can convert from list to array: `toArray()`
+    * **Be careful**: when converting from array to list -> they're linked: `Arrays.asList(someArray)`
+    * If you want to have unlinked & **immutable** list: `List.of(array)`
+
+    * None of the options allow you to change the size of the list. If you need, use `ArrayList`
+20. To sort ArrayList: `Collections.sort()`
+21. There are 2 variants of set: **HashSet** & **TreeSet**
+    * get()
+    * getOrDefault();
+    * put()
+    * remove() // returns value to a key
+    * containsKey()
+    * containsValue()
+    * keySet()
+    * values()
