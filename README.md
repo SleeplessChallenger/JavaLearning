@@ -274,7 +274,7 @@
    * parameter list
    * local variables inside lambda body
    * variables referenced from the lambda body
-5. Rules for acessing a variable from a lambda body:
+5. Rules for accessing a variable from a lambda body:
    * instance: allowed
    * static: allowed
    * local: allowed if final
@@ -284,3 +284,50 @@
    * removeIf()
    * sort()
    * forEach()
+
+<h3>Seventh chapter</h3>
+
+1. access modifiers:
+    * private: only from within the same class
+    * default: from classes in the same package (but not in children)
+    * protected: classes from the same package or subclasses + through inheritance in another package
+    * public: from any class can be called
+2. Optional specifiers:
+   * static
+   * abstract
+   * final
+   * synchronized
+   * native: when interacting with code in another language
+   * strictfp
+3. varargs:
+   * you can pass: nothing, one, many, array
+   * varargs must be the last parameter (you can't place it in the beginning)
+   * PS: if you pass `null` in the `varargs`, then it'll throw an error
+   * `(int... nums)` is an example
+4. Pay attention to `chapter7/swan/Swan`
+5. `static`: 
+   * for class methods & variables
+     * PS: if you have:
+       * `SomeClass k = Koala();`
+       * `k = null;` // still can reference Koala static variables
+6. We can't reassign final, but we can add values to it, if `final` is an array
+7. `static {}` is an initializer, like instance `{}`
+8. static imports are for importing static members, ordinary imports - for classes
+9. Java is a **pass-by-value** language
+   * but rule with **aggregates** works the same as in Kotlin || Python
+   * recall **pass-by-value** & **pass-by-reference**
+10. overloading methods: methods have the same name, but different signatures
+    * difference should occur in **parameters**, not simply in **return type**
+    * Java will pick the most precise version -> autoboxing, \
+      String/Object methods can be written, Java will separate them
+    * PS: Java will convert to **wider** type, not **narrower**:
+      * int will be passed to long, but long won't be passed to int
+    * Due to **type erasure**, you can't have 2 same methods with List,
+      where sub-type differs. But can with array:
+      * Good: `public static void methodArrayOne(int[] nums) & public static void methodArrayOne(Integer[] nums)`
+      * Bad: `public static void methodListOne(List<String> nums) & public static void methodListOne(List<Integer> num)`
+11. Order for overloading:
+    * exact match by type
+    * wider type
+    * Autoboxed type
+    * varargs
