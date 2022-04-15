@@ -256,3 +256,31 @@
     * containsValue()
     * keySet()
     * values()
+22. Use varargs to create list in another way:
+    * Arrays.asList("one", "two") // mutable inside
+    * List.of("One", "two") // totally immutable
+
+<h3>Sixth chapter</h3>
+
+1. Functional programming is a whole approach
+2. **Lambdas** are used with SAM: single abstract method
+3. 4 **functional interfaces**:
+   * predicate
+   * consumer
+   * supplier
+   * comparator
+   * PS: look at package with 6th index
+4. 3 places where Java can be used:
+   * parameter list
+   * local variables inside lambda body
+   * variables referenced from the lambda body
+5. Rules for acessing a variable from a lambda body:
+   * instance: allowed
+   * static: allowed
+   * local: allowed if final
+   * method param: allowed if final
+   * lambda param: allowed
+6. Lambda APIs:
+   * removeIf()
+   * sort()
+   * forEach()

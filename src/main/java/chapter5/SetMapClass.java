@@ -36,6 +36,12 @@ public class SetMapClass {
             System.out.println(k + " " + map.get(k));
         }
 
+        String ourString = "some";
+        for (int i = 0; i < ourString.length(); i++) {
+            Character letter = ourString.charAt(i);
+
+        }
+
         Collection<Boolean> allValues = map.values();
         System.out.println(allValues);
     }
