@@ -289,7 +289,7 @@
 
 1. access modifiers:
     * private: only from within the same class
-    * default: from classes in the same package (but not in children)
+    * default: from classes in the same package
     * protected: classes from the same package or subclasses + through inheritance in another package
     * public: from any class can be called
 2. Optional specifiers:
@@ -331,3 +331,10 @@
     * wider type
     * Autoboxed type
     * varargs
+
+<h3>Eight chapter</h3>
+
+1. Sublclasses **can** have access to `public` & `protected` variables of the parent
+2. if class marked `final`, it'll prevent it from being inherited
+3. `Object` is a class which serves as a parent to class which doesn't inherit from any other
+4. we can assign to **properties** of _parent_ class from _child_
