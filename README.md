@@ -334,7 +334,29 @@
 
 <h3>Eight chapter</h3>
 
-1. Sublclasses **can** have access to `public` & `protected` variables of the parent
+1. Subclasses **can** have access to `public` & `protected` variables of the parent
 2. if class marked `final`, it'll prevent it from being inherited
 3. `Object` is a class which serves as a parent to class which doesn't inherit from any other
 4. we can assign to **properties** of _parent_ class from _child_
+5. **Pay attention:**
+
+```bash
+    public void setColor(String color) {
+        color = color; // will assign to the `color` in this scope
+        this.color = color; // will assign to the instance variable
+   }
+```
+
+6. Again, recall that **primitives** in class **instance variables** (not only here) \
+   will hold default values if not assigned;
+7. use `super` to call methods/variables on parent class. Look `Mammal/Bat`
+8. **IMPORTANT**: `this` will navigate to the closest scope. But if **no** in the current class -> go to **parent**
+9. You can't put `var` in the constructor as with methods
+10. As with methods, there is **constructor overloading** as well
+11. `private` constructor:
+    * prevents compiler from providing **default no-argument** constructor
+    * `static` methods in the class have access to it
+12. `this` refers to instance of the class (local or parent); 
+    `this()` refers to constructor within the class
+    * **compiler** will detect if one _constructor_ calls another
+    * use `this()` to exclude duplication in constructors
