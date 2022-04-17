@@ -399,3 +399,54 @@
 21. If you reassign your object to the parent/interface, you can lose some methods/instances
     * **cast** from super-type to sub-type: if object is unrelated -> cast error at **runtime**
     * but it applies only to `classes`, not `interfaces` # TODO: revisit here
+
+<h3>Ninth chapter</h3>
+
+1. `abstract` class is to provide basic implementation for some methods &
+   force being implemented in children for others
+2. `implement` method in abstract class is considered `override`
+3. you can't instantiate `abstract` class
+   * you can't provide implementation in the body of `abstract` class
+
+4. incompatible modifiers:
+   * `final` & `abstract`
+   * `final` & `private`: will be considered an override, not implementation (
+     override in the sense of defining it in the child without direct relation to the parent)
+   * recall that access modifier can't be **narrower** in the child, **only same or wider**
+5. first `non-abstract` class must **implement** all the abstract methods: see `Mammal.java` in 9th chapter
+6. abstract class can't be `private` || `protected`. Only `public` || `default`
+7. **IMPORTANT**: implementing an `abstract` method in subclass must stick to the rules of overriding:
+   * child method has the same **signature**: params & name. **NOT RETURN TYPE**
+   * at least as accessible as parent method **(broader is ok, but narrower - NO)**
+   * checked exception mustn't be broader **(only checked, for ordinary doesn't apply)**
+   * return value must be of the same type or subtype: `covariant`
+8. To look at basic interface & some rules: `chapter9/InterfaceExample`
+9. `final` can't be applied to an `interface`
+10. by default (implicitly), access modifier of the interface method is `public`
+11. One `interface` can **extend** multiple other `interfaces`: package `AnotherMultipleInheritanceInterface`
+12. Interface can be defined with `public` || `package private` **(default)**
+13. Implicit modifiers for `interfaces`:
+    * `interfaces` are assumed to be `abstract`
+    * variables in interfaces are assumed to be: `public`, `static`, `final`
+    * interface methods without a body: `abstract` & `public`
+14. When working with `class members`, omitting the **access modifier** indicates **default** (package-
+    private) access. When working with `interface members`, though, the lack of **access modifier** always indicates **public** access
+15. 3 ways to inherit an interface:
+    * one `interface` extend another
+    * `class` implements `interface`
+    * `class` extends another class which implements `interface`
+    
+16. If `abstract` class implements `interface` -> not required to `implement` methods
+17. If class implements 2 interfaces where method is similar:
+    * if signature is the same -> they're compatible & we can provide one implementation
+    * if signatures are different: provide 2 implementations in the child class
+    * if signatures are the same, but return type is different: follow overriding principles
+18. compiler doesn't allow casts:
+    * unrelated objects: 
+    ```bash
+    ParentClass a = new Child();
+    ParentClass b = (AnotherChild)a; // breaks!
+    ```
+    * if object type doesn't implement the interface: i.e. `AnotherChild` doesn't implement `ParentClass`
+19.              
+            
