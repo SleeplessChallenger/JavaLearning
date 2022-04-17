@@ -7,7 +7,7 @@ public class Hamster {
     private static int COUNT_INSTANCES = 0;
 
     public Hamster(int weight) {
-        this(weight, "black");
+        this(weight, "black"); // to prevent duplicate code
         COUNT_INSTANCES++;
     }
 

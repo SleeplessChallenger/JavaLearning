@@ -360,3 +360,42 @@
     `this()` refers to constructor within the class
     * **compiler** will detect if one _constructor_ calls another
     * use `this()` to exclude duplication in constructors
+13. `super` refers to the constructor in the parent
+14. We can refer to multiple **parent** constructors from child due
+    to constructor **overloading** 
+    * see `chapter 8/SuperConstructor/Animal.java`
+15. first line in every class is call to either `this()` or `super()` even if we don't
+    insert it in the class
+    * Excerpt from the book: Remember, the first line of every constructor is a call to 
+      `this()` or `super()`, and if omitted, the compiler will automatically insert a call
+      to the parent no-argument constructor `super()`
+16. `final` instance variables **must** be initialized in: a) constructor b) initializer
+    * each **constructor** is a separate instance
+    * **BUT**: if some `final` variable is assigned in initializer before constructor
+      => constructor can't redefine it
+17 Order of initialization:
+    1. Initialize Class:
+    * parent classes if exist (the following will happen in parent of exist, then in child)
+    * `static` variables
+    * `static` initializers
+    * `main()` if method is called
+    
+    2. Initialize Instance:
+    * initialize the instance of Y first : initialize parent class with all the written down things there at first
+    * initialize all instance variables
+    * process all instance initializers
+    * initialize constructor with `this()` if exists
+
+17. we can access `private` fields of parent through inheritance: explore `Fish` package
+18. When overriding method, the following rules are to be considered:
+    * child method has the same **signature**: params & name. **NOT RETURN TYPE**
+    * at least as accessible as parent method **(broader is ok, but narrower - NO)**
+    * checked exception mustn't be broader **(only checked, for ordinary doesn't apply)**
+    * return value must be of the same type or subtype: `covariant`
+19. `covariant`: return value is of the same type or sub-type
+20. **Type erasure** during **overriding**:
+    * must be of same type: not in parent `List<Object>` & `List<Double>` in child
+    * however, in overloading like `List` & `ArrayList` it does work
+21. If you reassign your object to the parent/interface, you can lose some methods/instances
+    * **cast** from super-type to sub-type: if object is unrelated -> cast error at **runtime**
+    * but it applies only to `classes`, not `interfaces` # TODO: revisit here
