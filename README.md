@@ -270,17 +270,17 @@
    * supplier
    * comparator
    * PS: look at package with 6th index
-4. 3 places where Java can be used:
+4. 3 places where can be used:
    * parameter list
    * local variables inside lambda body
    * variables referenced from the lambda body
-5. Rules for accessing a variable from a lambda body:
+6. Rules for accessing a variable from a lambda body:
    * instance: allowed
    * static: allowed
    * local: allowed if final
    * method param: allowed if final
    * lambda param: allowed
-6. Lambda APIs:
+7. Lambda APIs:
    * removeIf()
    * sort()
    * forEach()
@@ -448,5 +448,25 @@
     ParentClass b = (AnotherChild)a; // breaks!
     ```
     * if object type doesn't implement the interface: i.e. `AnotherChild` doesn't implement `ParentClass`
-19.              
-            
+
+<h3>Tenth chapter</h3>
+
+1. Diagram of exceptions:
+```bash
+       Object -> Throwable
+                   /  \
+             Exception Error - Unchecked exception
+            /       |
+   RuntimeException Checked
+           |
+      Unchecked exception
+```
+
+2. **handle or declare rule**: checked exception that could be thrown within a method
+   are either a) _wrapped in compatible try/catch_ or b) _declared in the method signature_
+
+3. `throws` defines that method may throw an exception; `throw` actually does throw
+
+4. **unchecked exception** is any exception that doesn't need to be **declared or handled**
+5. don't forget to use `new` when throwing an Exception
+6. 
