@@ -27,5 +27,10 @@ public class FallExceptionClass {
     static void someMethod() {
         String[] animals = new String[4];
         System.out.println(animals.length);
+
+        int[] countOfMoose = new int[3];
+        for (int i = 0; i < countOfMoose.length; i++) {
+            System.out.println(countOfMoose[i]);
+        }
     }
 }

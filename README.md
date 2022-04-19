@@ -469,4 +469,35 @@
 
 4. **unchecked exception** is any exception that doesn't need to be **declared or handled**
 5. don't forget to use `new` when throwing an Exception
-6. 
+6. **Runtime exceptions** & their children are unchecked. Can be thrown by programmer or JVM
+7. Examples of exceptions by category:
+   * **RuntimeException**: ArithmeticException, ArrayIndexOutOfBoundsException, ClassCastException,
+     NullPointerException, IllegalArgumentException, NumberFormatException
+   * **Error**: ExceptionInitializerError, StackOverflowError, NoClassDefFoundError
+   * **Checked Exceptions**: IOException, FileNotFoundException
+   * About **NoClassDefFoundError**: A NoClassDefFoundError occurs when Java can’t find the class 
+     at runtime. Generally, this means a library available when the code was compiled is not 
+     available when the code is executed
+8. `try/catch` stuff
+ - If there is exception inside `try` that `catch` can catch -> enter it
+ - If we don't want program to stop, but just catch the exception and go further ->
+   don't throw in `catch` block that exception
+
+```bash
+    try {
+      // protected code
+   } catch (exception_type identifier) {
+      // Exception handler
+   }
+```
+
+9. **IMPORTANT**: don't put **superclass** of exception before **subclass**
+10. `multi-catch block` is to catch multiple exceptions at a time if they have similar methods
+
+11. In general, we use `finally` to close resource like file etc
+12. `finally` will always execute regardless of anything. But error may occur there
+13. `try-catch-resource` - you don't need to write `catch` & `finally` in the code explicitly
+    if you use **try-with-resource**
+    # TODO: don't we need to use `catch` if we `throws`?
+14. But, if `try` throws exception which wasn't defined in method -> use `catch`
+15. **AuoCloseable** for `try-with-resource` if you want to use it inside
