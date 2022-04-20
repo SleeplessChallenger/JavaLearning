@@ -498,6 +498,12 @@
 12. `finally` will always execute regardless of anything. But error may occur there
 13. `try-catch-resource` - you don't need to write `catch` & `finally` in the code explicitly
     if you use **try-with-resource**
-    # TODO: don't we need to use `catch` if we `throws`?
-14. But, if `try` throws exception which wasn't defined in method -> use `catch`
-15. **AuoCloseable** for `try-with-resource` if you want to use it inside
+    * use `catch` if you `throw` exception. And to be able to `throw` it you need
+        to put it in the **signature**
+14. **AuoCloseable** for `try-with-resource` if you want to use it insid
+15. Implicit `finally` is run before our custom `catch/finally` => resources are closed
+    before exiting `try` in **try-with-resource**
+    # TODO: revisit FinallyClosingResources: readAnotherFile (catch doesn't have any relation to `try`?)
+16. You can't add more exceptions in `sublcass` than in the `super class`. 
+    But we can throw _fewer/no_ by subclasses & children of exceptions
+17. **16 rule** applies only to checked exceptions

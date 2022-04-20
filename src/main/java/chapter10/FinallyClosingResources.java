@@ -1,8 +1,6 @@
 package chapter10;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class FinallyClosingResources {
 
@@ -11,7 +9,7 @@ public class FinallyClosingResources {
         try {
             is = new FileInputStream("myFile.txt");
             // Read data
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
             if (is != null) {
@@ -24,12 +22,13 @@ public class FinallyClosingResources {
         }
     }
 
-    public void readAnotherFile(String file) {
+    public void readAnotherFile(String file) throws IOException, ClassCastException {
         try (FileInputStream is = new
                 FileInputStream("myFile.txt")) {
             // read data
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException | ClassCastException e) {
+//            e.printStackTrace();
+            throw e;
         }
     }
 
