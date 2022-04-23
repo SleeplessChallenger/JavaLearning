@@ -76,7 +76,8 @@
     or:
     `import java.util.Date;
     import java.sql.*`
-12. Also, you can run: ` java -cp classes chapter1/Zoo.java f f` without compiling first
+12. Also, you can run: `java -cp classes chapter1/Zoo.java f f` without compiling first
+    * `javac -cp classpath -d directory classesToCompile (i.e. where to put them)`
 13. create `jar` of all files in the **current dir**. Yeah, you need to enter the dir
 14. full way to create byte code & run java:
     1. `javac chapter1/Learning.java`
@@ -236,7 +237,7 @@
    * equals()
 17. wrappers for primitives: Integer, Boolean etc
     * valueOf() is to convert String into wrapper
-    * parseBoolean, parse...() to convert Strigng into primitive
+    * parseBoolean, parse...() to convert String into primitive
 18. Autoboxing & Unboxing
     * autoboxing: from primitive to wrapper
     * unboxing: from wrapper to primitive
@@ -507,3 +508,64 @@
 16. You can't add more exceptions in `sublcass` than in the `super class`. 
     But we can throw _fewer/no_ by subclasses & children of exceptions
 17. **16 rule** applies only to checked exceptions
+
+<h3>Eleventh chapter</h3>
+
+1. **JPMS** - Java platform Module System:
+   * format for module JAR files
+   * partitioning of the JDK into modules
+   * additional command-line options for Java tools
+2. Purpose of a **module** is to provide groups of related packages to offer a 
+   particular set of functionality to developers. It’s like a JAR file except 
+   a developer chooses which packages are accessible outside the module
+3. What is a **module**:
+    * group of one/more packages
+    * file `module-info.java` inside each module
+4. **Modules** are fifth layer of _access control_ to fine-tune access
+5. When launching the program, it will scan dependencies in the `module-info.java`
+6. **JPMS** allows specifying which modules developer really needs to decrease _runtime image_
+   * user don't need `Java` to run the image
+   * `jlink` does this image
+7. Since Java now knows which modules are required, it only needs to look at those at class loading time
+8. Another manifestation of JAR hell is when the same package is in two JARs. There are a number of causes of this problem including 
+    renaming JARs, clever developers using a package name that is already taken, and having two versions of the same JAR on the classpath
+9. `javac --module-path chapter_eleven/mods -d chapter_eleven/feeding chapter_eleven/feeding/zoo/animal/feeding/*.java module-info.java`
+    * where `-d`: where to put files afterwards
+    * `.../.../*.java` is where we want to take files from
+    * `--module-path` == `-p`
+10. `java --module-path mods --module book.module/com.sybex.OCP`
+    * book.module is a module part
+    * `/` is a separator between **module** & **package**
+    * package: `com.sybex`
+    * `OCP` is a class name
+11. `jar -cvf chapter_eleven/mods/zoo.animal.feeding.jar -C chapter_eleven/feeding .`
+12. `java -p mods -m zoo.animal.feeding/zoo.animal.feeding.Task`
+13. `exports` keyword is required to make package used outside the module
+14. `exports current_module_name to desired_module_name`
+15. Speaking about exporting:
+    * `public interface, class, enum` are exportable
+    * `private & default` are not visible
+16. `required transitive`: any module that requires this module
+    will also depend on this transitive module
+    => no need to write multiple `export` in many files
+    - Example: A <- B <- C <- D where B depends on A, C depends on B ...
+      - In B `module-info.java`: `requires transitive A`
+      - In C: `requires transitive B`
+      - In D: `requires transitive C`
+        => see how we don't need to write A || B in any further file
+17. `provides, uses, opens` are other words
+18. `java` command:
+    * describes module: `java -p mods -d zoo.animal.feeding` || `java -p mods --describe-module zoo.animal.feeding`
+      * `requires java.base mandated` is included in all modules
+      * `qualified exports zoo.animal.care.medical to zoo.staff`
+      * `contains zoo.animal.details`: means package in the module that isn't exported at all
+    * lists available modules: `java --list-modules` || `java -p mods --list-modules`
+    * module resolution logic: `java --show-module-resolution -p feeding -m zoo.animal.feeding/zoo.animal.feeding.Task`
+19. `describe modules` with jar command:
+    * `jar -f mods/zoo.animal.feeding.jar -d` || `jar --file mods/zoo.animal.feeding.jar --describe-module`
+20. `jdeps` command tells you which dependencies are actually used in the code rather than simply declared:
+    * `jdeps -s mods/zoo.animal.feeding.jar` || `jdeps -summary mods/zoo.animal.feeding.jar`
+    * if current module depends on other modules: 
+      * `jdeps -s --module-path mods mods/zoo.animal.care.jar`
+      * `jdeps -summary --module-path mods mods/zoo.animal.care.jar`
+        * without `-s` || `-summary` we'll have a longer output
